@@ -1,0 +1,58 @@
+
+{%extends 'tasks_layout.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% block title %}
+    TASKS
+{% endblock %}
+
+{% block body %}
+
+    <h1>TASKS</h1>
+    <table class="table">
+        <tr>
+            <th>No</th>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Completed</th>
+            <th>date created</th>
+            <th>Status</th>
+        </tr>
+
+
+            {% for task in tasks %}
+                {% if task.completed == False %}
+                    <tr>
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{task.task}}</td>
+                        <td>{{task.priority}}</td>
+                        {% if task.completed == True %}
+                            <td>Completed</td>
+                        {% else %}
+                            <td>Uncompleted</td>
+                        {% endif %}
+                        <td>{{task.datetime|date:"d M Y" }}</td>
+                        <td>
+                            <form action="{% url 'complete' task.id %}">
+                                <input type="submit" value="Completed"
+                                {% if task.completed == True %}
+                                    disabled
+                                {% endif %}
+
+
+                                >
+                            </form></td>
+
+                    </tr>
+                {% endif %}
+            {% endfor %}
+</table>
+
+<a href="{% url 'add_task' %}">
+    <button type="button">ADD TASK</button>
+</a>
+
+
+
+
+{% endblock %}

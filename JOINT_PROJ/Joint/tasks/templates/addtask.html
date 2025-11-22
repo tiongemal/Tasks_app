@@ -1,0 +1,30 @@
+{% extends 'tasks_layout.html' %}
+
+{% block title %}
+    add_task
+{% endblock %}
+
+{% block body %}
+
+<h1>add task</h1>
+    <form action="{% url 'add_task'  %}" method="POST">
+        {% csrf_token %}
+        {% for field in forms%}
+            <label>{{field.label}}</label>
+            {{field}}
+
+            {% if field.errors%}
+                <div style="color:red">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+                <div style="color:red">
+                    {{ field.non_field_errors }}
+                </div>
+        {% endif %}
+        <input type="submit" value="Add">
+    </form>
+{% endblock %}

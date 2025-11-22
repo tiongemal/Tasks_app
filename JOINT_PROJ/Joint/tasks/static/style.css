@@ -1,0 +1,40 @@
+body {
+color:red;}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+/* Header style */
+table th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Cell style */
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Striped rows */
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover highlight */
+table tr:hover {
+    background-color: #e0f3ff;
+}
+
+/* Optional: round corners */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
